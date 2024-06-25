@@ -26,7 +26,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <main className="max-w-2xl mx-auto px-4">{children}</main>
+          <main className="w-full flex flex-col items-center">{children}</main>
         </ThemeProvider>
       </body>
     </html>
