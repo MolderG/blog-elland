@@ -22,7 +22,7 @@ export function BlogList({ data }: BlogList) {
         <div className="w-full flex flex-col">
           <p className="text-2xl font-bold">Últimos posts</p>
           <p className="text-lg">
-            Explore os melhor conteúdos a respeito do univero Elland
+            Explore os melhor conteúdos a respeito do universo Elland
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 pb-12 gap-5">
