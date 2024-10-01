@@ -1,5 +1,6 @@
 import { fullBlog } from '@/app/lib/interface';
 import { client, urlFor } from '@/app/lib/sanity';
+import { Skeleton } from '@/components/ui/skeleton';
 import { PortableText } from 'next-sanity';
 import Image from 'next/image';
 
@@ -26,7 +27,7 @@ export default async function BlogArticle({
 }) {
   const data: fullBlog = await getData(params.slug);
   return (
-    <div className="mt-8">
+    <div className="mt-8 flex flex-col items-center">
       <h1>
         <span className="block text-base text-center text-primary font-semibold tracking-wide uppercase">
           Elland - Blog
@@ -35,14 +36,18 @@ export default async function BlogArticle({
           {data.title}
         </span>
       </h1>
-      <Image
-        priority
-        src={urlFor(data.titleImage).url()}
-        alt="title-image"
-        width={800}
-        height={800}
-        className="rounded-lg mt-8 border"
-      />
+      {urlFor(data.titleImage).url().length !== 0 ? (
+        <Image
+          priority
+          src={urlFor(data.titleImage).url()}
+          alt="title-image"
+          width={400}
+          height={400}
+          className="rounded-lg mt-8 border"
+        />
+      ) : (
+        <Skeleton className="w-[400px] h-[400px] rounded-lg mt-8 border" />
+      )}
 
       <div className="mt-16 prose prose-blue prose-lg dark:prose-invert prose-li:marker:text-primary prose-a:text-primary">
         <PortableText value={data.content} />
